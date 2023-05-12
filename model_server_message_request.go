@@ -20,7 +20,7 @@ var _ MappedNullable = &ServerMessageRequest{}
 
 // ServerMessageRequest struct for ServerMessageRequest
 type ServerMessageRequest struct {
-	Messages []ServerMessageRequestMessagesInner `json:"messages,omitempty"`
+	Messages []ServerMRequest `json:"messages,omitempty"`
 }
 
 // NewServerMessageRequest instantiates a new ServerMessageRequest object
@@ -41,9 +41,9 @@ func NewServerMessageRequestWithDefaults() *ServerMessageRequest {
 }
 
 // GetMessages returns the Messages field value if set, zero value otherwise.
-func (o *ServerMessageRequest) GetMessages() []ServerMessageRequestMessagesInner {
+func (o *ServerMessageRequest) GetMessages() []ServerMRequest {
 	if o == nil || IsNil(o.Messages) {
-		var ret []ServerMessageRequestMessagesInner
+		var ret []ServerMRequest
 		return ret
 	}
 	return o.Messages
@@ -51,7 +51,7 @@ func (o *ServerMessageRequest) GetMessages() []ServerMessageRequestMessagesInner
 
 // GetMessagesOk returns a tuple with the Messages field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerMessageRequest) GetMessagesOk() ([]ServerMessageRequestMessagesInner, bool) {
+func (o *ServerMessageRequest) GetMessagesOk() ([]ServerMRequest, bool) {
 	if o == nil || IsNil(o.Messages) {
 		return nil, false
 	}
@@ -67,8 +67,8 @@ func (o *ServerMessageRequest) HasMessages() bool {
 	return false
 }
 
-// SetMessages gets a reference to the given []ServerMessageRequestMessagesInner and assigns it to the Messages field.
-func (o *ServerMessageRequest) SetMessages(v []ServerMessageRequestMessagesInner) {
+// SetMessages gets a reference to the given []ServerMRequest and assigns it to the Messages field.
+func (o *ServerMessageRequest) SetMessages(v []ServerMRequest) {
 	o.Messages = v
 }
 
