@@ -23,7 +23,7 @@ type ServerApprespApplication struct {
 	CreatedAt *string `json:"created_at,omitempty"`
 	Metadata map[string]interface{} `json:"metadata,omitempty"`
 	Name *string `json:"name,omitempty"`
-	OrgId *string `json:"org_id,omitempty"`
+	OrganisationId *string `json:"organisation_id,omitempty"`
 	Reference *string `json:"reference,omitempty"`
 	UpdatedAt *string `json:"updated_at,omitempty"`
 }
@@ -141,36 +141,36 @@ func (o *ServerApprespApplication) SetName(v string) {
 	o.Name = &v
 }
 
-// GetOrgId returns the OrgId field value if set, zero value otherwise.
-func (o *ServerApprespApplication) GetOrgId() string {
-	if o == nil || IsNil(o.OrgId) {
+// GetOrganisationId returns the OrganisationId field value if set, zero value otherwise.
+func (o *ServerApprespApplication) GetOrganisationId() string {
+	if o == nil || IsNil(o.OrganisationId) {
 		var ret string
 		return ret
 	}
-	return *o.OrgId
+	return *o.OrganisationId
 }
 
-// GetOrgIdOk returns a tuple with the OrgId field value if set, nil otherwise
+// GetOrganisationIdOk returns a tuple with the OrganisationId field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerApprespApplication) GetOrgIdOk() (*string, bool) {
-	if o == nil || IsNil(o.OrgId) {
+func (o *ServerApprespApplication) GetOrganisationIdOk() (*string, bool) {
+	if o == nil || IsNil(o.OrganisationId) {
 		return nil, false
 	}
-	return o.OrgId, true
+	return o.OrganisationId, true
 }
 
-// HasOrgId returns a boolean if a field has been set.
-func (o *ServerApprespApplication) HasOrgId() bool {
-	if o != nil && !IsNil(o.OrgId) {
+// HasOrganisationId returns a boolean if a field has been set.
+func (o *ServerApprespApplication) HasOrganisationId() bool {
+	if o != nil && !IsNil(o.OrganisationId) {
 		return true
 	}
 
 	return false
 }
 
-// SetOrgId gets a reference to the given string and assigns it to the OrgId field.
-func (o *ServerApprespApplication) SetOrgId(v string) {
-	o.OrgId = &v
+// SetOrganisationId gets a reference to the given string and assigns it to the OrganisationId field.
+func (o *ServerApprespApplication) SetOrganisationId(v string) {
+	o.OrganisationId = &v
 }
 
 // GetReference returns the Reference field value if set, zero value otherwise.
@@ -256,8 +256,8 @@ func (o ServerApprespApplication) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Name) {
 		toSerialize["name"] = o.Name
 	}
-	if !IsNil(o.OrgId) {
-		toSerialize["org_id"] = o.OrgId
+	if !IsNil(o.OrganisationId) {
+		toSerialize["organisation_id"] = o.OrganisationId
 	}
 	if !IsNil(o.Reference) {
 		toSerialize["reference"] = o.Reference

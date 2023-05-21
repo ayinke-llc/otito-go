@@ -13,9 +13,9 @@ docs/ServerAPIStatus.md
 docs/ServerAppresp.md
 docs/ServerApprespApplication.md
 docs/ServerCreateApplicationRequest.md
+docs/ServerMRequest.md
 docs/ServerMessageHTTPDefinition.md
 docs/ServerMessageRequest.md
-docs/ServerMessageRequestMessagesInner.md
 git_push.sh
 go.mod
 go.sum
@@ -24,8 +24,8 @@ model_server_api_status.go
 model_server_appresp.go
 model_server_appresp_application.go
 model_server_create_application_request.go
+model_server_m_request.go
 model_server_message_http_definition.go
 model_server_message_request.go
-model_server_message_request_messages_inner.go
 response.go
 utils.go

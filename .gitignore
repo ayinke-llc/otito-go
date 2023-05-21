@@ -2,9 +2,6 @@
 *.o
 *.a
 *.so
-./api/openapi.yaml
-./docs
-./test
 
 # Folders
 _obj
