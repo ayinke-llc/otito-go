@@ -20,64 +20,54 @@ import (
 )
 
 
-// MessageApiService MessageApi service
-type MessageApiService service
+// DashboardApiService DashboardApi service
+type DashboardApiService service
 
-type ApiMessagesPostRequest struct {
+type ApiDashboardAccessPostRequest struct {
 	ctx context.Context
-	ApiService *MessageApiService
-	message *ServerMessageRequest
+	ApiService *DashboardApiService
 }
 
-// Request body
-func (r ApiMessagesPostRequest) Message(message ServerMessageRequest) ApiMessagesPostRequest {
-	r.message = &message
-	return r
-}
-
-func (r ApiMessagesPostRequest) Execute() (*ServerAPIStatus, *http.Response, error) {
-	return r.ApiService.MessagesPostExecute(r)
+func (r ApiDashboardAccessPostRequest) Execute() (*ServerUrlResp, *http.Response, error) {
+	return r.ApiService.DashboardAccessPostExecute(r)
 }
 
 /*
-MessagesPost create messages
+DashboardAccessPost create access token
 
  @param ctx context.Context - for authentication, logging, cancellation, deadlines, tracing, etc. Passed from http.Request or context.Background().
- @return ApiMessagesPostRequest
+ @return ApiDashboardAccessPostRequest
 */
-func (a *MessageApiService) MessagesPost(ctx context.Context) ApiMessagesPostRequest {
-	return ApiMessagesPostRequest{
+func (a *DashboardApiService) DashboardAccessPost(ctx context.Context) ApiDashboardAccessPostRequest {
+	return ApiDashboardAccessPostRequest{
 		ApiService: a,
 		ctx: ctx,
 	}
 }
 
 // Execute executes the request
-//  @return ServerAPIStatus
-func (a *MessageApiService) MessagesPostExecute(r ApiMessagesPostRequest) (*ServerAPIStatus, *http.Response, error) {
+//  @return ServerUrlResp
+func (a *DashboardApiService) DashboardAccessPostExecute(r ApiDashboardAccessPostRequest) (*ServerUrlResp, *http.Response, error) {
 	var (
 		localVarHTTPMethod   = http.MethodPost
 		localVarPostBody     interface{}
 		formFiles            []formFile
-		localVarReturnValue  *ServerAPIStatus
+		localVarReturnValue  *ServerUrlResp
 	)
 
-	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "MessageApiService.MessagesPost")
+	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "DashboardApiService.DashboardAccessPost")
 	if err != nil {
 		return localVarReturnValue, nil, &GenericOpenAPIError{error: err.Error()}
 	}
 
-	localVarPath := localBasePath + "/messages"
+	localVarPath := localBasePath + "/dashboard_access"
 
 	localVarHeaderParams := make(map[string]string)
 	localVarQueryParams := url.Values{}
 	localVarFormParams := url.Values{}
-	if r.message == nil {
-		return localVarReturnValue, nil, reportError("message is required and must be specified")
-	}
 
 	// to determine the Content-Type header
-	localVarHTTPContentTypes := []string{"application/json"}
+	localVarHTTPContentTypes := []string{}
 
 	// set Content-Type header
 	localVarHTTPContentType := selectHeaderContentType(localVarHTTPContentTypes)
@@ -93,8 +83,6 @@ func (a *MessageApiService) MessagesPostExecute(r ApiMessagesPostRequest) (*Serv
 	if localVarHTTPHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
-	// body params
-	localVarPostBody = r.message
 	if r.ctx != nil {
 		// API Key Authentication
 		if auth, ok := r.ctx.Value(ContextAPIKeys).(map[string]APIKey); ok {

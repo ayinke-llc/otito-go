@@ -15,35 +15,36 @@ import (
 	"encoding/json"
 )
 
-// checks if the ServerAPIError type satisfies the MappedNullable interface at compile time
-var _ MappedNullable = &ServerAPIError{}
+// checks if the ServerUrlResp type satisfies the MappedNullable interface at compile time
+var _ MappedNullable = &ServerUrlResp{}
 
-// ServerAPIError struct for ServerAPIError
-type ServerAPIError struct {
+// ServerUrlResp struct for ServerUrlResp
+type ServerUrlResp struct {
 	// Generic message that tells you the status of the operation
 	Message *string `json:"message,omitempty"`
 	Status *bool `json:"status,omitempty"`
+	Url *string `json:"url,omitempty"`
 }
 
-// NewServerAPIError instantiates a new ServerAPIError object
+// NewServerUrlResp instantiates a new ServerUrlResp object
 // This constructor will assign default values to properties that have it defined,
 // and makes sure properties required by API are set, but the set of arguments
 // will change when the set of required properties is changed
-func NewServerAPIError() *ServerAPIError {
-	this := ServerAPIError{}
+func NewServerUrlResp() *ServerUrlResp {
+	this := ServerUrlResp{}
 	return &this
 }
 
-// NewServerAPIErrorWithDefaults instantiates a new ServerAPIError object
+// NewServerUrlRespWithDefaults instantiates a new ServerUrlResp object
 // This constructor will only assign default values to properties that have it defined,
 // but it doesn't guarantee that properties required by API are set
-func NewServerAPIErrorWithDefaults() *ServerAPIError {
-	this := ServerAPIError{}
+func NewServerUrlRespWithDefaults() *ServerUrlResp {
+	this := ServerUrlResp{}
 	return &this
 }
 
 // GetMessage returns the Message field value if set, zero value otherwise.
-func (o *ServerAPIError) GetMessage() string {
+func (o *ServerUrlResp) GetMessage() string {
 	if o == nil || IsNil(o.Message) {
 		var ret string
 		return ret
@@ -53,7 +54,7 @@ func (o *ServerAPIError) GetMessage() string {
 
 // GetMessageOk returns a tuple with the Message field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerAPIError) GetMessageOk() (*string, bool) {
+func (o *ServerUrlResp) GetMessageOk() (*string, bool) {
 	if o == nil || IsNil(o.Message) {
 		return nil, false
 	}
@@ -61,7 +62,7 @@ func (o *ServerAPIError) GetMessageOk() (*string, bool) {
 }
 
 // HasMessage returns a boolean if a field has been set.
-func (o *ServerAPIError) HasMessage() bool {
+func (o *ServerUrlResp) HasMessage() bool {
 	if o != nil && !IsNil(o.Message) {
 		return true
 	}
@@ -70,12 +71,12 @@ func (o *ServerAPIError) HasMessage() bool {
 }
 
 // SetMessage gets a reference to the given string and assigns it to the Message field.
-func (o *ServerAPIError) SetMessage(v string) {
+func (o *ServerUrlResp) SetMessage(v string) {
 	o.Message = &v
 }
 
 // GetStatus returns the Status field value if set, zero value otherwise.
-func (o *ServerAPIError) GetStatus() bool {
+func (o *ServerUrlResp) GetStatus() bool {
 	if o == nil || IsNil(o.Status) {
 		var ret bool
 		return ret
@@ -85,7 +86,7 @@ func (o *ServerAPIError) GetStatus() bool {
 
 // GetStatusOk returns a tuple with the Status field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *ServerAPIError) GetStatusOk() (*bool, bool) {
+func (o *ServerUrlResp) GetStatusOk() (*bool, bool) {
 	if o == nil || IsNil(o.Status) {
 		return nil, false
 	}
@@ -93,7 +94,7 @@ func (o *ServerAPIError) GetStatusOk() (*bool, bool) {
 }
 
 // HasStatus returns a boolean if a field has been set.
-func (o *ServerAPIError) HasStatus() bool {
+func (o *ServerUrlResp) HasStatus() bool {
 	if o != nil && !IsNil(o.Status) {
 		return true
 	}
@@ -102,11 +103,43 @@ func (o *ServerAPIError) HasStatus() bool {
 }
 
 // SetStatus gets a reference to the given bool and assigns it to the Status field.
-func (o *ServerAPIError) SetStatus(v bool) {
+func (o *ServerUrlResp) SetStatus(v bool) {
 	o.Status = &v
 }
 
-func (o ServerAPIError) MarshalJSON() ([]byte, error) {
+// GetUrl returns the Url field value if set, zero value otherwise.
+func (o *ServerUrlResp) GetUrl() string {
+	if o == nil || IsNil(o.Url) {
+		var ret string
+		return ret
+	}
+	return *o.Url
+}
+
+// GetUrlOk returns a tuple with the Url field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *ServerUrlResp) GetUrlOk() (*string, bool) {
+	if o == nil || IsNil(o.Url) {
+		return nil, false
+	}
+	return o.Url, true
+}
+
+// HasUrl returns a boolean if a field has been set.
+func (o *ServerUrlResp) HasUrl() bool {
+	if o != nil && !IsNil(o.Url) {
+		return true
+	}
+
+	return false
+}
+
+// SetUrl gets a reference to the given string and assigns it to the Url field.
+func (o *ServerUrlResp) SetUrl(v string) {
+	o.Url = &v
+}
+
+func (o ServerUrlResp) MarshalJSON() ([]byte, error) {
 	toSerialize,err := o.ToMap()
 	if err != nil {
 		return []byte{}, err
@@ -114,7 +147,7 @@ func (o ServerAPIError) MarshalJSON() ([]byte, error) {
 	return json.Marshal(toSerialize)
 }
 
-func (o ServerAPIError) ToMap() (map[string]interface{}, error) {
+func (o ServerUrlResp) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	if !IsNil(o.Message) {
 		toSerialize["message"] = o.Message
@@ -122,41 +155,44 @@ func (o ServerAPIError) ToMap() (map[string]interface{}, error) {
 	if !IsNil(o.Status) {
 		toSerialize["status"] = o.Status
 	}
+	if !IsNil(o.Url) {
+		toSerialize["url"] = o.Url
+	}
 	return toSerialize, nil
 }
 
-type NullableServerAPIError struct {
-	value *ServerAPIError
+type NullableServerUrlResp struct {
+	value *ServerUrlResp
 	isSet bool
 }
 
-func (v NullableServerAPIError) Get() *ServerAPIError {
+func (v NullableServerUrlResp) Get() *ServerUrlResp {
 	return v.value
 }
 
-func (v *NullableServerAPIError) Set(val *ServerAPIError) {
+func (v *NullableServerUrlResp) Set(val *ServerUrlResp) {
 	v.value = val
 	v.isSet = true
 }
 
-func (v NullableServerAPIError) IsSet() bool {
+func (v NullableServerUrlResp) IsSet() bool {
 	return v.isSet
 }
 
-func (v *NullableServerAPIError) Unset() {
+func (v *NullableServerUrlResp) Unset() {
 	v.value = nil
 	v.isSet = false
 }
 
-func NewNullableServerAPIError(val *ServerAPIError) *NullableServerAPIError {
-	return &NullableServerAPIError{value: val, isSet: true}
+func NewNullableServerUrlResp(val *ServerUrlResp) *NullableServerUrlResp {
+	return &NullableServerUrlResp{value: val, isSet: true}
 }
 
-func (v NullableServerAPIError) MarshalJSON() ([]byte, error) {
+func (v NullableServerUrlResp) MarshalJSON() ([]byte, error) {
 	return json.Marshal(v.value)
 }
 
-func (v *NullableServerAPIError) UnmarshalJSON(src []byte) error {
+func (v *NullableServerUrlResp) UnmarshalJSON(src []byte) error {
 	v.isSet = true
 	return json.Unmarshal(src, &v.value)
 }
